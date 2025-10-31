@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# BASE_DIR = '/usr/tom/vue-demo/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-(0b8x00a2$*+^p!!h%o3j9@uy^@r5g_#5v=-=alqgnur**qf84
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
-    "myapp",
-    "books"
+    "channels",
+    "books",
+    "heart",
+    "nodes",
+    "links"
 ]
-
+ASGI_APPLICATION = 'ollama_chat.asgi.application'
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -76,15 +79,20 @@ TEMPLATES = [
 WSGI_APPLICATION = "myworld.wsgi.application"
 
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'dist/static')
+    os.path.join(BASE_DIR,'dist')
 ]
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "django_vue_db",
+        "user": 'jack',
+        "password": '',
+        "host": '127.0.0.1'
     }
 }
 
@@ -123,7 +131,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "dist/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

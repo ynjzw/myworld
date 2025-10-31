@@ -17,12 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path,include
-from myapp import views
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('api/my-api/',views.my_api,name='my_api'),
     path('api/',include('books.urls')),
-    path('',TemplateView.as_view(template_name='index.html'))
+    path('api/',include('heart.urls')),
+    path('api/',include('nodes.urls')),
+    path('api/',include('links.urls')),
+    path('',TemplateView.as_view(template_name='index.html')),
+    # path('hello/',TemplateView.as_view(template_name='/home/jack/Desktop/vite-project/src/components/HelloWorld.vue'))
 ]
