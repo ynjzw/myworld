@@ -5,17 +5,36 @@ class Nodes(models.Model):
     # node
     id=models.CharField(max_length=30,primary_key=True)
     name=models.CharField(max_length=30)
-    val=models.IntegerField()
-    color=models.CharField(max_length=30)
+    value=models.CharField(max_length=30)
+    x=models.IntegerField()
+    y=models.IntegerField()
+    symbol=models.CharField(max_length=30)
+    symbol_size=models.IntegerField()
+    itemStyle=models.JSONField()
     class Meta:
         managed=False
-        db_table='nodes_nodes'
+        db_table='nodes'
 
 class Links(models.Model):
-    source=models.CharField(max_length=30)
-    target=models.CharField(max_length=30)
-    color=models.CharField(max_length=30)
+    id=models.CharField(max_length=30,primary_key=True)
+    source = models.CharField(max_length=30)
+    target = models.CharField(max_length=30)
+    value = models.CharField(max_length=30)
+    symbol=models.CharField(max_length=30)
     # link
     class Meta:
         managed=False
-        db_table='links_links'
+        db_table='links'
+
+class Family(models.Model):
+    id=models.CharField(max_length=30,primary_key=True)
+    name=models.CharField(max_length=30)
+    value=models.CharField(max_length=30)
+    x=models.IntegerField()
+    y=models.IntegerField()
+    symbol=models.CharField(max_length=30)
+    symbol_size=models.IntegerField()
+    itemStyle=models.JSONField()
+    class Meta:
+        managed=False
+        db_table='family'

@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "channels",
+    "chat",
     "books",
     "heart",
     "nodes",
-    "links"
+    "links",
+    "ollama",
+    "pyttsx3"
 ]
 ASGI_APPLICATION = 'ollama_chat.asgi.application'
 MIDDLEWARE = [
@@ -89,7 +92,7 @@ DATABASES = {
         # "ENGINE": "django.db.backends.sqlite3",
         # "NAME": BASE_DIR / "db.sqlite3",
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "django_vue_db",
+        "NAME": "graph",
         "user": 'jack',
         "password": '',
         "host": '127.0.0.1'

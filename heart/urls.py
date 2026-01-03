@@ -6,5 +6,6 @@ router=DefaultRouter()
 router.register('heart',views.HeartViewSet)
 
 urlpatterns=[
-    path('',include(router.urls))
+    path('',include(router.urls)),
+    path('ttt',views.ttt,name='ttt')
 ]
